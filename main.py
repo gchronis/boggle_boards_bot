@@ -62,5 +62,5 @@ def board_string(letters):
 letters = generate_board()
 boggle_board = board_string(letters)
 api = login()
-api.tweet(boggle_board)
+tweet(api, boggle_board)
 print string
