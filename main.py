@@ -30,11 +30,8 @@ def generate_board():
         "UWILRG",
         "PACEMD",
     ]
-    print len(dice)
     letters = [ random.choice(die) for die in dice ]
-    print len(letters)
     random.shuffle(letters)
-    print len(letters)
     return letters
 
 def board_string(letters):
