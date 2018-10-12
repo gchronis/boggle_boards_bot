@@ -4,6 +4,7 @@
 from config import *
 import tweepy
 import random
+from unicodedata import normalize
 
 def login():
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -52,31 +53,40 @@ def widen(s):
     return unicode(s).translate(WIDE_MAP).encode('utf8')
 
 def board_string(letters):
-    horiz = "+-----------+"
+    #horiz = widen("+---------+")
+    horiz = widen("+") + " "
+    for i in range(7):
+        horiz += widen("-") + " "
+    horiz += widen("+")
+
+    # construct row divider
+    divider = widen("|") + " "
+    for i in range(7):
+        divider += widen("-") + " "
+    divider += widen("|")
 
     board = ""
     board += horiz
     board += "\n"
     for i in range(4):
-        board += "|"
+        board += widen("|") + " "
         for j in range(4):
-            #board += " "
             letter = letters.pop()
             if letter == "Q":
-                board += "Qu"
+                board += "Qu" + widen("|") + " "
             else:
-                board += widen(letter)
-            board +="|"
+                #board += widen(letter)+" | "
+                board += widen(letter) + " " + widen("|") + " "
         board += "\n"
         if not i  == 3:
-            board += "|- - - - - -|"
+            #board += widen("| - - - - |")
+            board += divider
             board += "\n"
     board += horiz 
-    return board
+    return normalize('NFC',unicode(board, 'utf-8'))
 
 letters = generate_board()
 boggle_board = board_string(letters)
 print boggle_board
-#api = login()
-#tweet(api, boggle_board)
-print string
+api = login()
+tweet(api, boggle_board)
