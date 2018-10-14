@@ -11,7 +11,6 @@ def login():
     return tweepy.API(auth)
 
 def tweet(api, string):
-    print string
     api.update_status(status=string)
 
 # returns a list of 16 boggle letters
@@ -88,6 +87,6 @@ def main():
     letters = generate_board()
     boggle_board = board_string(letters)
     print "Tweeting this board"
-    print boggle_board
     api = login()
     tweet(api, boggle_board)
+    print letters
