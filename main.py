@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 from config import *
@@ -85,8 +84,10 @@ def board_string(letters):
     board += horiz 
     return normalize('NFC',unicode(board, 'utf-8'))
 
-letters = generate_board()
-boggle_board = board_string(letters)
-print boggle_board
-api = login()
-tweet(api, boggle_board)
+def main():
+    letters = generate_board()
+    boggle_board = board_string(letters)
+    print "Tweeting this board"
+    print boggle_board
+    api = login()
+    tweet(api, boggle_board)
