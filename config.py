@@ -1,4 +1,6 @@
-CONSUMER_KEY = 'replace with your key'
-CONSUMER_SECRET = 'replace with your secret'
-ACCESS_TOKEN = 'replace with your access key'
-ACCESS_TOKEN_SECRET = 'replace with your access secret'
+import os
+
+CONSUMER_KEY = os.environ['CONSUMER_KEY']
+CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+ACCESS_TOKEN_SECRET = os.environ['ACCESS_TOKEN_SECRET']
