@@ -1,1 +1,12 @@
-tweepy==3.6.0
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+
+[packages]
+tweepy = "*"
+
+[requires]
+python_version = "2.7"
